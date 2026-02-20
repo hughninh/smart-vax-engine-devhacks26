@@ -1,8 +1,9 @@
 import java.awt.Font;
-import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
 import javax.swing.JButton;
-import javax.swing.JComboBox;import javax.swing.JComboBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -14,7 +15,8 @@ public class UserInformation extends JPanel{
             JLabel title = new JLabel("Please Enter User Information");
             Font font = new Font("", Font.BOLD, 50);
             title.setFont(font);
-            JTextField name = new JTextField("Please Enter Your Name");
+            JTextField name = new JTextField("Please Enter Your Full Name");
+            
             JComboBox<String> conditions = new JComboBox<String>();
             
             String[] days = new String[365];
@@ -29,9 +31,9 @@ public class UserInformation extends JPanel{
             }
             JComboBox<String> monthPicker = new JComboBox<String>(months);
 
-            String[] years = new String [126];
+            String[] years = new String [127];
             for(int i = 1900; i <= 2026; i++){
-               years[i-1] = Integer.toString(i);
+               years[i - 1900] = Integer.toString(i);
             }
             JComboBox<String> yearPicker = new JComboBox<String>(years);
             
@@ -45,5 +47,8 @@ public class UserInformation extends JPanel{
             JButton create = new JButton("Create User");
             constraints.gridy = 2;
             this.add(create, constraints);
+
+            
+
        }
 }
