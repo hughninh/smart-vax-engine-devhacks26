@@ -1,5 +1,5 @@
 public enum VaccineType {
-    /* comment text */
+    /*  for Infants and Pre-School Children */
     RSV,
 
     DTAP_IPV_HIB, // Treats Diphtheria, Tetanus, Pertussis, Polio, Haemophilus influenzae type b
@@ -15,6 +15,7 @@ public enum VaccineType {
     TDAP_IPV, // Treats Tetanus, Diphtheria, Pertussis, Polio
 
     FLU
+
 
 
 
