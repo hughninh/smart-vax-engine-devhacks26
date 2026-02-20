@@ -10,8 +10,6 @@ public class User {
 
     private ArrayList<Vaccine> reactions;
 
-
-
     public User(Date birthday, String name){
         this.birthday = birthday;
         this.name = name;
@@ -23,6 +21,4 @@ public class User {
         receivedVaccines.add(new Vaccine(type, dateReceived));
     }
 
-
-    
 }
