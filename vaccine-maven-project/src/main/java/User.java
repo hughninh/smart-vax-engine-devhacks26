@@ -146,7 +146,7 @@ public class User {
             content += v + "    \n";
            }
         }
-        if (!content.equals("")){
+        if (!content.equals("")) {
             // send a notification to the user
             SystemTray t = SystemTray.getSystemTray();
             Image im = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);

@@ -330,7 +330,7 @@ public class UserInformation extends JPanel{
             }
 
             newUser.setHealthConditions(conditions.getSelectedIndex());
-            
+
             newUser.determineFutureVaccines(CURRENT_DATE);
 
             parent.removeAll();
