@@ -1,12 +1,10 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,9 +18,7 @@ public class UserDisplayManager extends JPanel{
         this.parent = parent;
         this.setLayout(new BorderLayout());
         usersPanel = new JPanel(new GridBagLayout());
-        usersPanel.setBackground(new Color(255, 255, 255));
         menuPanel = new JPanel(new BorderLayout());
-        menuPanel.setBackground(new Color(0, 255, 0));
         this.add(usersPanel, BorderLayout.CENTER);
         this.add(menuPanel, BorderLayout.NORTH);
 
