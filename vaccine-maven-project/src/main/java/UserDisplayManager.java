@@ -39,6 +39,9 @@ public class UserDisplayManager extends JPanel{
     }
 
     public void updateDisplay(){
+        Font heading = new Font("", Font.BOLD, 40);
+        Font subtitles = new Font("", Font.BOLD, 35);
+
         GridBagConstraints c = new GridBagConstraints();
         if(users.size() == 0){
             // if there are no users
@@ -51,38 +54,63 @@ public class UserDisplayManager extends JPanel{
         }else{
             // iterate for each user and add the user to the panel=
             JLabel futureLabel = new JLabel("Future Vaccines: ");
+            futureLabel.setFont(heading);
             c.gridy = 1;
             usersPanel.add(futureLabel, c);
 
             for(Vaccine v : users.get(0).getFutureVaccines()){
                 // add each future vaccine to the display
                 c.gridy++;
-                usersPanel.add(new JLabel(v.toString()), c);
+                JLabel vaccineLabel = new JLabel(v.toString());
+                vaccineLabel.setFont(subtitles);
+                usersPanel.add(vaccineLabel, c);
             }
-
-
 
 
             
             // iterate for each user and add the user to the panel=
             JLabel pastVaccine = new JLabel("Vaccine History: ");
+            pastVaccine.setFont(heading);
             c.gridy++;
             usersPanel.add(pastVaccine, c);
 
             for(Vaccine v : users.get(0).getReceivedVaccines()){
                 // add each future vaccine to the display
                 c.gridy++;
-                usersPanel.add(new JLabel(v.toString()), c);
+                JLabel vaccineLabel = new JLabel(v.toString());
+                vaccineLabel.setFont(subtitles);
+                usersPanel.add(vaccineLabel, c);
             }
 
+
+
+
             JLabel missedVaccine = new JLabel("Missed Vaccine: ");
+            missedVaccine.setFont(heading);
             c.gridy++;
             usersPanel.add(missedVaccine, c);
 
             for(Vaccine v : users.get(0).getMissedVaccines()){
                 // add each future vaccine to the display
                 c.gridy++;
-                usersPanel.add(new JLabel(v.toString()), c);
+                JLabel vaccineLabel = new JLabel(v.toString());
+                vaccineLabel.setFont(subtitles);
+                usersPanel.add(vaccineLabel, c);
+            }
+
+
+
+            JLabel notEligable = new JLabel("Not Elligable Vaccines: ");
+            notEligable.setFont(heading);
+            c.gridy++;
+            usersPanel.add(notEligable, c);
+
+            for(Vaccine v : users.get(0).getNotElligableVaccines()){
+                // add each future vaccine to the display
+                c.gridy++;
+                JLabel vaccineLabel = new JLabel(v.toString());
+                vaccineLabel.setFont(subtitles);
+                usersPanel.add(vaccineLabel, c);
             }
         }
     }

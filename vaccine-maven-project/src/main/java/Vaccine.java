@@ -26,6 +26,9 @@ public class Vaccine {
             case TDAP:
                 s += "TDAP ";
                 break;
+            case PNEU_C_20:
+                s += "PNEU_C_20 ";
+                break;
         
             default:
                 s += "other -> please correct error in vaccine toString";
