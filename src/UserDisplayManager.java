@@ -20,7 +20,9 @@ public class UserDisplayManager extends JPanel{
         this.parent = parent;
         this.setLayout(new BorderLayout());
         usersPanel = new JPanel(new GridBagLayout());
+        usersPanel.setBackground(new Color(255, 255, 255));
         menuPanel = new JPanel(new BorderLayout());
+        menuPanel.setBackground(new Color(0, 255, 0));
         this.add(usersPanel, BorderLayout.CENTER);
         this.add(menuPanel, BorderLayout.NORTH);
 
