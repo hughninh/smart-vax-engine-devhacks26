@@ -30,7 +30,7 @@ public class UserInformation extends JPanel{
             this.setLayout(new GridBagLayout());
 
             // JLabel title = new JLabel("Please Enter User Information: ");
-            Font font = new Font("", Font.BOLD, 40);
+            Font font = new Font("", Font.BOLD, 20);
             // title.setFont(font);
             JLabel nameLabel = new JLabel("Please Enter Your Full Name: ");
             nameLabel.setFont(font);
