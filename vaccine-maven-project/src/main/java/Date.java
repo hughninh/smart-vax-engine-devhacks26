@@ -39,4 +39,8 @@ public class Date {
 
         return after;
     }
+    
+    public String toString(){
+        return "" + day + "/" + month + "/" + year;
+    }
 }

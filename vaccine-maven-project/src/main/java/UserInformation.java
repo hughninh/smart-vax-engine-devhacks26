@@ -3,6 +3,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -114,7 +117,103 @@ public class UserInformation extends JPanel{
             create.setFont(font);
             create.addActionListener(new createListener());
             constraints.gridy = 10;
+            JButton load = new JButton("Load User From a File");
+            load.addActionListener(new loadListener());
+            load.setFont(font);
+
             this.add(create, constraints);
+            constraints.gridy = 11;
+            this.add(load, constraints);
+       }
+
+       private class loadListener implements ActionListener{
+         public void actionPerformed(ActionEvent e){
+            try{
+               Scanner fileReader = new Scanner(new File("savedUser.csv"));
+               String nameString = fileReader.nextLine();
+               String birthBirthdayString = fileReader.nextLine();
+               String healthConditionString = fileReader.nextLine();
+               String healthHistoryString = fileReader.nextLine();
+               fileReader.close();
+               
+               // Set the UI elements based on the file 
+               nameInput.setText(nameString);
+               birthInputField.setText(birthBirthdayString);
+               conditions.setSelectedIndex(Integer.parseInt(healthConditionString));
+
+               // Set the vaccination history
+               
+               // split by comma
+               String[] tokens = healthHistoryString.split(",");
+               if(tokens.length >= 1){
+                  String[] data = tokens[0].split(" ");
+                  System.out.println("data[0]: " + data[0]);
+                  whenField1.setText(data[1]);
+                  int indexOfThing = 0;
+                  switch (data[0]) {
+                     case "FLU":
+                        indexOfThing = 2;
+                        break;
+                     case "TDAP":
+                        indexOfThing = 1;
+                        break;
+                     case "PNEU_C_20":
+                        indexOfThing = 3;
+                        break;
+                  
+                     default:
+                        break;
+                  }
+                  historyBox1.setSelectedIndex(indexOfThing);
+               }
+
+               if(tokens.length >= 2){
+                  String[] data = tokens[1].split(" ");
+                  whenField2.setText(data[1]);
+                  int indexOfThing = 0;
+                  switch (data[0]) {
+                     case "FLU":
+                        indexOfThing = 2;
+                        break;
+                     case "TDAP":
+                        indexOfThing = 1;
+                        break;
+                     case "PNEU_C_20":
+                        indexOfThing = 3;
+                        break;
+                  
+                     default:
+                        break;
+                  }
+                  historyBox2.setSelectedIndex(indexOfThing);
+               }
+
+               if(tokens.length >= 3){
+                  String[] data = tokens[2].split(" ");
+                  whenField3.setText(data[1]);
+                  int indexOfThing = 0;
+                  switch (data[0]) {
+                     case "FLU":
+                        indexOfThing = 2;
+                        break;
+                     case "TDAP":
+                        indexOfThing = 1;
+                        break;
+                     case "PNEU_C_20":
+                        indexOfThing = 3;
+                        break;
+                  
+                     default:
+                        break;
+                  }
+                  historyBox3.setSelectedIndex(indexOfThing);
+               }
+
+
+            }catch(FileNotFoundException fnfe){
+               System.err.println("Error Reading the File");
+            }
+         }
        }
 
        private class createListener implements ActionListener{

@@ -2,6 +2,9 @@ import java.awt.Image;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -155,6 +158,31 @@ public class User {
             icon.displayMessage("Upcoming Vaccines: ", content, TrayIcon.MessageType.WARNING);
         }
         
+        try{
+            saveUser();
+        }catch(FileNotFoundException fnfe){
+            System.err.println("Unable to save the file");
+        }
+
+    }
+
+    public void saveUser() throws FileNotFoundException{
+        // save each of the vaccine history
+        // we can recalculate the future vaccines
+        // we can determine the missed vaccines
+        // we have to save the health conditions
+        // we have the name
+        // we have to save the birthday
+        PrintWriter p = new PrintWriter(new File("savedUser.csv"));
+        p.write(name + "\n");
+        p.write(birthday.toString() + "\n");
+        p.write(healthConditions + "\n");
+        for (Vaccine v : receivedVaccines){
+            p.write(v.toString() + ",");
+        }
+
+        p.close();
+
     }
 
 
