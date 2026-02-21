@@ -13,7 +13,7 @@ public class Main{
     } 
     catch (Exception e) {}
         JFrame window = new JFrame();
-        window.setTitle("Vaccine Thing");
+        window.setTitle("Vaccine Manager");
         window.setSize(1500, 1000);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel mainPanel = new JPanel(new BorderLayout());
