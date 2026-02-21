@@ -12,13 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class UserDisplayManager extends JPanel{
-    private ArrayList<User> users;
+    private static ArrayList<User> users = new ArrayList<User>();
     private JPanel usersPanel;
     private JPanel menuPanel;
     private JPanel parent;
     public UserDisplayManager(JPanel parent){
         this.parent = parent;
-        users = new ArrayList<User>();
         this.setLayout(new BorderLayout());
         usersPanel = new JPanel(new GridBagLayout());
         usersPanel.setBackground(new Color(255, 255, 255));
@@ -35,6 +34,10 @@ public class UserDisplayManager extends JPanel{
         updateDisplay();
     }
 
+    public static void addUser(User user){
+        users.add(user);
+    }
+
     public void updateDisplay(){
         GridBagConstraints c = new GridBagConstraints();
         if(users.size() == 0){
@@ -46,7 +49,41 @@ public class UserDisplayManager extends JPanel{
             c.gridy = 0;
             usersPanel.add(noUsers, c);
         }else{
-            // iterate for each user and add the user to the panel
+            // iterate for each user and add the user to the panel=
+            JLabel futureLabel = new JLabel("Future Vaccines: ");
+            c.gridy = 1;
+            usersPanel.add(futureLabel, c);
+
+            for(Vaccine v : users.get(0).getFutureVaccines()){
+                // add each future vaccine to the display
+                c.gridy++;
+                usersPanel.add(new JLabel(v.toString()), c);
+            }
+
+
+
+
+            
+            // iterate for each user and add the user to the panel=
+            JLabel pastVaccine = new JLabel("Vaccine History: ");
+            c.gridy++;
+            usersPanel.add(pastVaccine, c);
+
+            for(Vaccine v : users.get(0).getReceivedVaccines()){
+                // add each future vaccine to the display
+                c.gridy++;
+                usersPanel.add(new JLabel(v.toString()), c);
+            }
+
+            JLabel missedVaccine = new JLabel("Missed Vaccine: ");
+            c.gridy++;
+            usersPanel.add(missedVaccine, c);
+
+            for(Vaccine v : users.get(0).getMissedVaccines()){
+                // add each future vaccine to the display
+                c.gridy++;
+                usersPanel.add(new JLabel(v.toString()), c);
+            }
         }
     }
 
@@ -54,8 +91,14 @@ public class UserDisplayManager extends JPanel{
         public void actionPerformed(ActionEvent e){
             parent.removeAll();
             parent.invalidate();
-            parent.add(new UserInformation());
+            parent.add(new UserInformation(parent));
             parent.revalidate();
+        }
+    }
+
+    private class createListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            
         }
     }
 }
